@@ -49,7 +49,12 @@ Luego hay que crear un callback en el backend de Sigfox con las características
 Y creamos un Device en Losant con las características siguientes:
 
 <p align="center">
-  <img width="700" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/Captura%20de%20pantalla%202019-05-13%20a%20la(s)%2019.34.36.png">
+  <img width="700" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/Captura%20de%20pantalla%202019-05-14%20a%20la(s)%208.59.10.png">
+</p>
+
+
+<p align="center">
+  <img width="700" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/Captura%20de%20pantalla%202019-05-14%20a%20la(s)%208.59.30.png">
 </p>
 
 El paso siguiente es construir el workflow en Losant:
