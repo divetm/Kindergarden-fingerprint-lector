@@ -11,7 +11,11 @@ Introducción
 
 Este proyecto tiene como objetivo desarrollar un prototipo para guarderías que quieran tener un registro de los niños que entran cada día en su establecimiento.
 El prototipo consta de un lector de huellas (Adafruit Fingerprint sensor #751), un detector de presencia de dedo (fotoresistencia) y un Devkit 2.0 de NXTIoT.
-![devkit](link_hacia_imagen)
+
+<p align="center">
+  <img width="300" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/WhatsApp%20Image%202019-05-13%20at%2019.49.49.jpeg">
+</p>
+
 Cuando un dedo es detectado el lector se prende. Si el dedo de un niño es identificado, una alerta de entrada a la guardería es enviada a Losant.
 Si el dedo identificado es el del administrador de la guardería, dos opciones son posibles: 1. Registrar una nueva huella o 2. Borrar una huella existente. Una alerta se envia a Sigfox en ambos casos.
 En Losant se creo un dashboard desde el cual se pueden ver todo el historial de las alertas.
@@ -25,10 +29,16 @@ Losant
 ----
 
 Para crear el dashboard en Losant, primero tenemos que crear un Webhook con las características siguientes:
-![webhook](link)
+
+<p align="center">
+  <img height="700" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/Captura%20de%20pantalla%202019-05-13%20a%20la(s)%2019.30.50.png">
+</p>
 
 Luego hay que crear un callback en el backend de Sigfox con las características siguientes:
-![callback](callback)
+
+<p align="center">
+  <img width="100%" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/Captura%20de%20pantalla%202019-05-13%20a%20la(s)%2019.31.43.png">
+</p>
 
     {
       "device" : "{device}",
@@ -37,13 +47,22 @@ Luego hay que crear un callback en el backend de Sigfox con las características
     }
     
 Y creamos un Device en Losant con las características siguientes:
-![device](device)
+
+<p align="center">
+  <img width="700" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/Captura%20de%20pantalla%202019-05-13%20a%20la(s)%2019.34.36.png">
+</p>
 
 El paso siguiente es construir el workflow en Losant:
-![workflow](workflow)
+
+<p align="center">
+  <img width="700" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/Captura%20de%20pantalla%202019-05-14%20a%20la(s)%208.39.59.png">
+</p>
 
 Para el bloco "Webhook", sólo se necesita seleccionar el webhook que creamos más arriba:
-![webhook_in_worflow](webhook_in_worflow)
+
+<p align="center">
+  <img width="300" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/Captura%20de%20pantalla%202019-05-13%20a%20la(s)%2019.36.27.png">
+</p>
 
 En el bloco "Function", este es el código que utilizamos:
 
@@ -74,18 +93,29 @@ En el bloco "Function", este es el código que utilizamos:
     
 En el bloco "Device State", sólo se necesita seleccionar el device que creamos previamente y luego especificar que campos del "payload.data.body" corresponden a los atributos del device:
 
-![device_state_1](device_state_1)
-![device_state_2](device_state_2)
+<p align="center">
+  <img width="300" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/Captura%20de%20pantalla%202019-05-13%20a%20la(s)%2019.40.45.png">
+</p>
+
+<p align="center">
+  <img width="300" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/Captura%20de%20pantalla%202019-05-13%20a%20la(s)%2019.40.51.png">
+</p>
 
 No hay que modificar nada en el bloco "Debug" y porfin en el bloco "Webhook Reply" sólo complete los campos "Response Code Template" y "Reply Body" como sigue:
 
-![webhook_reply](webhook_reply)
+<p align="center">
+  <img width="300" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/Captura%20de%20pantalla%202019-05-13%20a%20la(s)%2019.41.41.png">
+</p>
 
 Darle click a "Save & Deploy"
 Por último, tenemos que crear el dashboard. Para eso, en la sección Dashboards de Losant, creamos el Dashboard "Lector de huellas para la guarderia":
 
-![dashboard](dashboard)
+<p align="center">
+  <img width="100%" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/Captura%20de%20pantalla%202019-05-14%20a%20la(s)%208.52.03.png">
+</p>
 
 Le agregamos el bloco "Device State Table":
 
-![device_state_table](device_state_table)
+<p align="center">
+  <img width="500" src="https://github.com/divetm/Lector-de-huellas-para-guarder-as/blob/master/imagenes/Captura%20de%20pantalla%202019-05-13%20a%20la(s)%2019.46.42.png">
+</p>
