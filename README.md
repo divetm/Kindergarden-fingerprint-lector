@@ -1,5 +1,5 @@
 # Lector de huellas para guarderías
-Proyecto IoT de WND
+*Proyecto IoT de WND*
 
 
 1. [Introducción](#introducción)
