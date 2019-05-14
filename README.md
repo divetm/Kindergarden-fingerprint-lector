@@ -72,6 +72,7 @@ Para el bloco "Webhook", sólo se necesita seleccionar el webhook que creamos m�
 En el bloco "Function", este es el código que utilizamos:
 
     payload.data.body.fingerprint_id = parseInt(payload.data.body.data.substring(0,2));
+    
     if (payload.data.body.fingerprint_id===1){
       payload.data.body.name = "Admin";
     }
@@ -84,9 +85,12 @@ En el bloco "Function", este es el código que utilizamos:
     else if (payload.data.body.fingerprint_id===4){
       payload.data.body.name = "Nombre&Apellido3";
     }
+    
     // agregar una condición else if como estas para cada nueva huella registrada (hasta 162 huellas)
+    
     payload.data.body.admin_choice = parseInt(payload.data.body.data.substring(2,4));
     payload.data.body.admin_id_modified = parseInt(payload.data.body.data.substring(4,6));
+    
     if(payload.data.body.admin_choice == 1){
       payload.data.body.alert = "Nueva huella registrada. ID = "+payload.data.body.admin_id_modified;
     }
