@@ -76,24 +76,25 @@ En el bloco "Function", este es el código que utilizamos:
       payload.data.body.name = "Admin";
     }
     else if (payload.data.body.fingerprint_id===2){
-      payload.data.body.name = "Pepito";
+      payload.data.body.name = "Nombre&Apellido1";
     }
     else if (payload.data.body.fingerprint_id===3){
-      payload.data.body.name = "Juan";
+      payload.data.body.name = "Nombre&Apellido2";
     }
     else if (payload.data.body.fingerprint_id===4){
-      payload.data.body.name = "Jose";
+      payload.data.body.name = "Nombre&Apellido3";
     }
+    // agregar una condición else if como estas para cada nueva huella registrada (hasta 162 huellas)
     payload.data.body.admin_choice = parseInt(payload.data.body.data.substring(2,4));
     payload.data.body.admin_id_modified = parseInt(payload.data.body.data.substring(4,6));
     if(payload.data.body.admin_choice == 1){
-      payload.data.body.alert = "Added a new fingerprint. ID = "+payload.data.body.admin_id_modified;
+      payload.data.body.alert = "Nueva huella registrada. ID = "+payload.data.body.admin_id_modified;
     }
     else if(payload.data.body.admin_choice == 2){
-      payload.data.body.alert = "Erased a fingerprint. ID = "+payload.data.body.admin_id_modified;
+      payload.data.body.alert = "Huella borrada. ID = "+payload.data.body.admin_id_modified;
     }
     else if(payload.data.body.admin_choice == 0){
-      payload.data.body.alert = "Entry";
+      payload.data.body.alert = "Entrada";
     }
     
 En el bloco "Device State", sólo se necesita seleccionar el device que creamos previamente y luego especificar que campos del "payload.data.body" corresponden a los atributos del device:
